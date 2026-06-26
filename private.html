@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tell Us More | Southern Fish Supply, Invercargill</title>
+<meta name="description" content="Share your feedback privately with Southern Fish Supply, Invercargill.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .pf-wrap{min-height:100svh;display:flex;align-items:center;justify-content:center;background:var(--sea);position:relative;overflow:hidden;padding:110px 20px 60px}
+  .pf-wrap::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 15%,rgba(242,160,61,.16),transparent 55%)}
+  .pf-card{position:relative;z-index:1;background:#fff;border-radius:24px;max-width:580px;width:100%;padding:clamp(28px,5vw,48px);box-shadow:0 40px 90px -40px rgba(0,0,0,.6)}
+  .pf-card .eyebrow{margin-bottom:12px}
+  .pf-card h1{font-size:clamp(1.6rem,4.6vw,2.2rem);margin-bottom:10px}
+  .pf-card p.sub{color:var(--muted);margin-bottom:26px}
+  .pf-stars{display:flex;gap:5px;margin-bottom:22px}
+  .pf-stars svg{width:26px;height:26px;color:#e2dccd}
+  .pf-stars svg.lit{color:var(--gold)}
+  .pf-brand{position:absolute;top:28px;left:0;right:0;z-index:2;text-align:center}
+  .pf-brand a{font-family:"Unbounded";font-weight:700;color:#fff;font-size:1.05rem}
+  .pf-brand b{color:var(--gold)}
+  .back{display:inline-block;margin-top:18px;color:var(--muted);font-size:.9rem}
+  .back:hover{color:var(--gold-deep)}
+</style>
+</head>
+<body>
+<div class="pf-wrap">
+  <div class="pf-brand"><a href="index.html">Southern <b>Fish&nbsp;Supply</b></a></div>
+  <div class="pf-card">
+    <span class="eyebrow">Private feedback</span>
+    <h1>Thanks for being honest</h1>
+    <p class="sub">We'd genuinely like to put it right. Tell us what happened and it comes straight to us — not posted publicly.</p>
+    <div class="pf-stars" id="pfstars" aria-label="Your rating">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg>
+    </div>
+
+    <form class="" action="https://formsubmit.co/ajax/938265070@qq.com" method="POST" data-ajax>
+      <input type="hidden" name="_subject" value="Private feedback — Southern Fish Supply website">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Rating" id="ratingField" value="">
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="Name" type="text" required placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="Email" type="email" required placeholder="you@email.co.nz">
+        </div>
+      </div>
+      <div class="field">
+        <label for="rating">Your rating</label>
+        <select id="rating" name="Rating (selected)">
+          <option value="1">★ — 1 star</option>
+          <option value="2">★★ — 2 stars</option>
+          <option value="3">★★★ — 3 stars</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fb">What could we have done better?</label>
+        <textarea id="fb" name="Feedback" required placeholder="Tell us what happened with your order — we read every message."></textarea>
+      </div>
+      <button class="btn btn-gold" type="submit" style="width:100%">Send private feedback</button>
+    </form>
+
+    <div class="form-success">
+      <div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>Thank you — we've got it</h3>
+      <p>We really appreciate you taking the time. Someone from Southern Fish Supply will look into this and make it right.</p>
+      <a class="back" href="index.html">← Back to site</a>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+<script>
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var r = parseInt(params.get('rating'), 10);
+    if (!(r >= 1 && r <= 3)) r = 3;
+    var sel = document.getElementById('rating');
+    var hidden = document.getElementById('ratingField');
+    sel.value = String(r);
+    hidden.value = r;
+    sel.addEventListener('change', function(){ hidden.value = sel.value; paint(+sel.value); });
+    var stars = document.querySelectorAll('#pfstars svg');
+    function paint(n){ stars.forEach(function(s,i){ s.classList.toggle('lit', i < n); }); }
+    paint(r);
+  })();
+</script>
+</body>
+</html>

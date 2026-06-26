@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leave a Review | Southern Fish Supply, Invercargill</title>
+<meta name="description" content="Tell us how your feed was at Southern Fish Supply, Invercargill.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .rate-wrap{min-height:100svh;display:flex;align-items:center;justify-content:center;background:var(--sea);position:relative;overflow:hidden;padding:120px 20px 60px}
+  .rate-wrap::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 15%,rgba(242,160,61,.18),transparent 55%)}
+  .rate-card{position:relative;z-index:1;background:#fff;border-radius:24px;max-width:560px;width:100%;padding:clamp(30px,5vw,52px);text-align:center;box-shadow:0 40px 90px -40px rgba(0,0,0,.6)}
+  .rate-card .eyebrow{justify-content:center;margin-bottom:14px}
+  .rate-card h1{font-size:clamp(1.7rem,5vw,2.4rem);margin-bottom:12px}
+  .rate-card p.sub{color:var(--muted);margin-bottom:30px}
+  .star-row{display:flex;justify-content:center;gap:8px;margin-bottom:14px}
+  .star-row button{background:none;border:0;cursor:pointer;padding:4px;line-height:0}
+  .star-row svg{width:clamp(40px,11vw,56px);height:clamp(40px,11vw,56px);color:#e2dccd;transition:transform .2s var(--ease),color .2s}
+  .star-row button:hover svg{transform:scale(1.15)}
+  .star-row button.lit svg{color:var(--gold)}
+  .rate-hint{height:24px;color:var(--gold-deep);font-weight:700;font-family:"Unbounded";font-size:.9rem;letter-spacing:.04em;margin-bottom:8px}
+  .rate-card .back{display:inline-block;margin-top:26px;color:var(--muted);font-size:.9rem}
+  .rate-card .back:hover{color:var(--gold-deep)}
+  .rate-brand{position:absolute;top:28px;left:0;right:0;z-index:2;text-align:center}
+  .rate-brand a{font-family:"Unbounded";font-weight:700;color:#fff;font-size:1.05rem}
+  .rate-brand b{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="rate-wrap">
+  <div class="rate-brand"><a href="index.html">Southern <b>Fish&nbsp;Supply</b></a></div>
+  <div class="rate-card">
+    <span class="eyebrow">Your feedback</span>
+    <h1>How was your feed?</h1>
+    <p class="sub">Tap a star to rate your visit to Southern Fish Supply. It only takes a second.</p>
+    <div class="star-row" id="stars">
+      <button data-v="1" aria-label="1 star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg></button>
+      <button data-v="2" aria-label="2 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg></button>
+      <button data-v="3" aria-label="3 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg></button>
+      <button data-v="4" aria-label="4 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg></button>
+      <button data-v="5" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21l1.3-7-5-4.8 7-.9z"/></svg></button>
+    </div>
+    <div class="rate-hint" id="hint">&nbsp;</div>
+    <a class="back" href="index.html">← Back to site</a>
+  </div>
+</div>
+<script>
+  // 4-5 stars -> public Google review; 1-3 -> private feedback form
+  var GOOGLE_REVIEW_URL = "https://g.page/r/PLACEHOLDER";
+  var stars = document.querySelectorAll('#stars button');
+  var hint = document.getElementById('hint');
+  var hints = {1:"Sorry to hear that — tell us more",2:"We'd like to make it right",3:"Help us do better",4:"Glad you enjoyed it!",5:"Choice! Share it on Google"};
+  stars.forEach(function(btn){
+    var v = +btn.dataset.v;
+    btn.addEventListener('mouseenter', function(){ paint(v); hint.textContent = hints[v]; });
+    btn.addEventListener('mouseleave', function(){ paint(0); hint.innerHTML = "&nbsp;"; });
+    btn.addEventListener('click', function(){
+      if (v >= 4) { window.location.href = GOOGLE_REVIEW_URL; }
+      else { window.location.href = "private.html?rating=" + v; }
+    });
+  });
+  function paint(n){ stars.forEach(function(b){ b.classList.toggle('lit', +b.dataset.v <= n); }); }
+</script>
+</body>
+</html>
